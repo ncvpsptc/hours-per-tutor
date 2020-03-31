@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hours per Tutor | Generate</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<input type="text" placeholder="Generation Code" id="code"/> <button>Submit</button>
+<div id="results"></div>
+<script>
+function generate() {
+  $.post('https://api.ncvpsptc.repl.co/data-analytics/tutors',{code:$('#code').val()},console.log)
+
+
+}
+
+</script>
+</body>
+</html>
