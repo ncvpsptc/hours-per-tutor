@@ -14,7 +14,7 @@ function generate() {
     $.post('https://api.ncvpsptc.repl.co/api/hash/md5',{txt:data[i]}, (hash) => {
       let a = document.createElement('a');
       a.textContent = data[i];
-      a.href = '#'+hash;
+      a.href = '/stats.html#'+hash;
       document.getElementById('results').appendChild(a);
     });
   }
