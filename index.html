@@ -5,11 +5,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<input type="text" placeholder="Generation Code" id="code"/> <button>Submit</button>
+<input type="text" placeholder="Generation Code" id="code"/> <button onclick="generate()">Submit</button>
 <div id="results"></div>
 <script>
 function generate() {
-  $.post('https://api.ncvpsptc.repl.co/data-analytics/tutors',{code:$('#code').val()},console.log)
+  $.post('https://api.ncvpsptc.repl.co/data-analytics/tutors',{code:$('#code').val()},(data)=>{
+  for(let i in data) {
+    $.post('https://api.ncvpsptc.repl.co/api/hash/md5',{txt:data[i]}, (hash) => {
+      let a = document.createElement('a');
+      a.textContent = data[i];
+      a.href = '#'+hash;
+      document.getElementById('results').appendChild(a);
+    });
+  }
+  });
 
 
 }
